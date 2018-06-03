@@ -1,15 +1,17 @@
+require("./config/config");
+
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const publicPath = path.join(__dirname,"../public");
+const publicPath = path.join(__dirname, "../public");
 
 var app = express();
-const port = 3000;
+const port = process.env.PORT;
 app.use(express.static(publicPath));
 
-
 app.listen(port, () => {
-    console.log(`server started on port ${port}`);
-  });
-  
+  console.log(`server started on port ${port}`);
+});
+
+module.exports = { app };
